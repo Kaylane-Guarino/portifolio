@@ -22,7 +22,7 @@ export function Banner() {
 
   useEffect(() => {
     const currentText = texts[textIndex];
-    let i = typedText.length;
+    const i = typedText.length;
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting && i < currentText.length) {
