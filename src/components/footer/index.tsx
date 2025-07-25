@@ -1,6 +1,6 @@
 "use client";
 import { FaHeart } from "react-icons/fa";
-import styles from "./temp.module.scss";
+import styles from "./footer.module.scss";
 
 export default function Footer() {
   return (
