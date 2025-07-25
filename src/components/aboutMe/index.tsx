@@ -20,6 +20,13 @@ export function AboutMe({text}: { text: string }) {
             height={400}
             className={styles.image}
           />
+          <Image
+            src={Me}
+            alt="Eu"
+            width={300}
+            height={300}
+            className={styles.imageMobile}
+          />
         </div>
         <div className={styles.paragraph}>
           <h1 className={blackOps.className}>Sobre mim</h1>

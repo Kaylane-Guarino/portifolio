@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 50px 0;
 
     @media screen and (max-width: 1000px) {
         padding: 4rem 0;
@@ -56,6 +57,11 @@
         &:hover {
             transform: scale(1.2);
             color: var(--icon-color);
+        }
+
+        @media screen and (max-width: 800px) {
+            font-size: 3rem;
+            
         }
     }
 

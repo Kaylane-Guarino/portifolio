@@ -1,10 +1,16 @@
 .section {
     width: 100%;
-    height: calc(100vh - 85px);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #141414;
+    background-color: var(--secondary-color);
+
+    @media screen and (max-width: 1000px) {
+        height: auto;
+        margin-top: 150px;
+    }
+
 
     .content {
         width: 1220px;
@@ -43,6 +49,29 @@
 
                 &:hover {
                     transform: scale(1.05);
+                }
+
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                    
+                }
+            }
+
+            .imageMobile {
+                display: none;
+                border-radius: 15px;
+                box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.563);
+                transition: transform 0.3s ease;
+                transition: transform 0.6s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                @media screen and (max-width: 1000px) {
+                    display: block;
+                    width: 100%;
+                    height: auto;
                 }
             }
         }
