@@ -1,6 +1,5 @@
 "use client";
-import React, { JSX, useState } from "react";
-import Image from "next/image";
+import React, { JSX } from "react";
 import styles from "./page.module.scss";
 import { Header } from "@/components/header";
 import { section } from "@/constants/section";
@@ -17,7 +16,7 @@ export default function Home() {
             prop: typeof props
           ) => JSX.Element;
           return (
-            <CurrentComponent key={idx} {...(props as Record<string, any>)} />
+            <CurrentComponent key={idx} {...(props as Record<string, unknown>)} />
           );
         })}
       </main>

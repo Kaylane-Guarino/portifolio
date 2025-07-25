@@ -22,7 +22,7 @@ export function Banner({locale}: { locale: string }) {
 
   useEffect(() => {
     const currentText = texts[textIndex];
-    let i = typedText.length;
+    const i = typedText.length;
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting && i < currentText.length) {

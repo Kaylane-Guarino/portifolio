@@ -1,7 +1,6 @@
 import { CSSProperties, Suspense } from "react";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import Script from "next/script";
 import { ConfigProvider } from "antd";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 
