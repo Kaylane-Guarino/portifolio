@@ -1,7 +1,8 @@
 :root {
-  --background: #ffffff;
+  --background-color: #ffffff;
   --foreground: #171717;
   --primary-color: #6ed309;
+  --primary-color-hover: #92ea3a;
 }
 
 @font-face {

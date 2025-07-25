@@ -1,0 +1,76 @@
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 1000px) {
+        padding: 4rem 0;
+      
+    }
+
+    .container {
+        width: 1220px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 20px;
+
+        @media screen and (max-width: 1000px) {
+            width: 100%;
+            padding: 1rem;
+        }
+    }
+
+    h1 {
+        color: white;
+        font-size: 2rem;
+        margin: 1rem 0;
+
+        @media screen and (max-width: 1000px) {
+            text-align: center;
+        }
+    }
+
+    .icons {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); // 5 por linha
+        gap: 2rem;
+        justify-items: center;
+
+        @media screen and (max-width: 1000px) {
+            grid-template-columns: repeat(3, 1fr); // 3 por linha
+          
+        }
+        
+    }
+
+    .icon {
+        font-size: 5rem;
+        color: white;
+        transition: transform 0.3s ease, color 0.3s ease;
+        cursor: crosshair;
+
+        &:hover {
+            transform: scale(1.2);
+            color: var(--icon-color);
+        }
+    }
+
+    @keyframes flipCoin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(1800deg);
+  }
+}
+
+.spin {
+  animation: flipCoin 1.6s ease forwards;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}
+}

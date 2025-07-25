@@ -1,4 +1,7 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 50px;
   display: flex;
@@ -8,11 +11,20 @@
   color: var(--primary-color);
   opacity: 0.7;
   transition: opacity 0.3s ease;
+  z-index: 1000;
+
+  &.scrolled {
+    background: #000000c8;
+    color: white;
+    backdrop-filter: blur(3rem);
+  }
+
 
   .content {
-    width: 1200px;
+    width: 1220px;
     display: flex;
     align-items: center;
+    padding: 0 20px;
 
     nav {
       width: 100%;
@@ -28,6 +40,10 @@
         display: flex;
         gap: 25px;
 
+        @media screen and (max-width: 1000px) {
+          display: none;
+        }
+
         li {
           list-style: none;
         }
@@ -35,6 +51,10 @@
 
       .socialLinks {
         gap: 15px;
+
+        @media screen and (max-width: 1000px) {
+          display: none;
+        }
       }
 
       .item a {
@@ -68,6 +88,31 @@
           transform: scaleX(1);
         }
       }
+
+      .select {
+        display: none;
+        width: 200px;
+        background: transparent;
+        color: var(--primary-color);
+        border: none;
+        font-size: 16px;
+        padding: 10px;
+        outline: none;
+
+        option {
+          color: black; // para quando abrir o dropdown
+          background: white;
+        }
+
+        @media screen and (max-width: 1000px) {
+          display: block;
+        }
+
+        &.scrolled {
+          color: white;
+        }
+      }
+
     }
   }
 }

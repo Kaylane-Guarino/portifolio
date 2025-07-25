@@ -1,19 +1,20 @@
-'use client';
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Black_Ops_One } from 'next/font/google';
+import { Black_Ops_One } from "next/font/google";
 import InstagramIcon from "@/icons/intagram";
 import GitHubIcon from "@/icons/github";
 import LinkedinIcon from "@/icons/linkedin";
 import styles from "./header.module.scss";
 
 const blackOps = Black_Ops_One({
-  weight: '400',
-  subsets: ['latin'],
+  weight: "400",
+  subsets: ["latin"],
 });
 
 export function Header() {
   const [hovered, setHovered] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const getColor = (id: string) => {
     if (hovered === id) {
@@ -21,43 +22,82 @@ export function Header() {
       if (id === "github") return "#ffffff";
       if (id === "linkedin") return "#0254a1";
     }
-    return "#6ed309";
+    return !isScrolled ? "#6ed309" : "#FFFFFF";
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getSectionId = (label: string) => {
+    switch (label) {
+      case "Sobre mim":
+        return "#about";
+      case "Conhecimentos":
+        return "#knowledge";
+      case "Fale comigo":
+        return "#talk-to-me";
+      default:
+        return "#";
+    }
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.content}>
         <nav>
           <Link href="/" className={`${blackOps.className} ${styles.logo}`}>
             {"<KGS />"}
           </Link>
           <ul>
-            <li className={styles.item}>
-              <Link id="aboutNav" href="#about">
-                Sobre mim
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link id="projectsNav" href="#projects">
-                Projetos
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link id="knowledgeNav" href="#knowledge">
-                Conhecimentos
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link id="contactNav" href="#contact">
-                Fale comigo
-              </Link>
-            </li>
-          </ul>
+  <li className={styles.item}>
+    <a
+      href="#about"
+      onClick={(e) => {
+        e.preventDefault();
+        const section = document.querySelector("#about");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }}
+    >
+      Sobre mim
+    </a>
+  </li>
+  <li className={styles.item}>
+    <a
+      href="#knowledge"
+      onClick={(e) => {
+        e.preventDefault();
+        const section = document.querySelector("#knowledge");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }}
+    >
+      Conhecimentos
+    </a>
+  </li>
+  <li className={styles.item}>
+    <a
+      href="#talk-to-me"
+      onClick={(e) => {
+        e.preventDefault();
+        const section = document.querySelector("#talk-to-me");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }}
+    >
+      Fale comigo
+    </a>
+  </li>
+</ul>
+
 
           <ul className={styles.socialLinks}>
             <li>
               <Link
-                href="https://instagram.com/lucyanovidio"
+                href="https://www.instagram.com/kaahguarino_/"
                 target="_blank"
                 title="Instagram"
                 onMouseEnter={() => setHovered("instagram")}
@@ -68,7 +108,7 @@ export function Header() {
             </li>
             <li>
               <Link
-                href="https://github.com/lucyanovidio"
+                href="https://github.com/Kaylane-Guarino"
                 target="_blank"
                 title="Github"
                 onMouseEnter={() => setHovered("github")}
@@ -79,7 +119,7 @@ export function Header() {
             </li>
             <li>
               <Link
-                href="https://linkedin.com/in/lucyanovidio"
+                href="https://www.linkedin.com/in/kaylane-guarino-84229120a/"
                 target="_blank"
                 title="LinkedIn"
                 onMouseEnter={() => setHovered("linkedin")}
@@ -89,8 +129,27 @@ export function Header() {
               </Link>
             </li>
           </ul>
+          <select
+            className={`${styles.select} ${isScrolled ? styles.scrolled : ""}`}
+            defaultValue="Menu"
+            onChange={(e) => {
+              const value = e.target.value;
+
+              if (value === "#") {
+                window.location.href = value;
+              } else {
+                const section = document.querySelector(value);
+                section?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            <option value="#">Menu</option>
+            <option value="#about">Sobre mim</option>
+            <option value="#knowledge">Conhecimentos</option>
+            <option value="#talk-to-me">Fale comigo</option>
+          </select>
         </nav>
       </div>
     </header>
   );
-};
+}

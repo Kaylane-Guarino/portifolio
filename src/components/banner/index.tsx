@@ -14,7 +14,7 @@ const blackOps = Black_Ops_One({
   subsets: ["latin"],
 });
 
-export function Banner() {
+export function Banner({locale}: { locale: string }) {
   const texts = ["Kaylane", "Dev Frontend"];
   const [textIndex, setTextIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -56,14 +56,18 @@ export function Banner() {
             Eu sou <span className={styles.typewriter}>{typedText}</span>
           </h1>
           <p className={styles.locale}>
-            <EnvironmentOutlined /> Itapevi, São Paulo - Brasil
+            <EnvironmentOutlined /> {locale}
           </p>
-          <Button className={styles.button}>Fale Comigo</Button>
+          <Link href="/#talk-to-me" className={styles.button}>Fale Comigo</Link>
         </div>
         <div className={styles.picture}>
-          <div className={styles.contentPicture}>
-            <Image src={Me} width={270} height={400} alt="EU" className={styles.image} />
-          </div>
+          <Image
+            src={Me}
+            width={350}
+            height={400}
+            alt="EU"
+            className={styles.image}
+          />
         </div>
       </div>
     </section>
