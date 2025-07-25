@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Black_Ops_One } from "next/font/google";
-import { Button } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
@@ -14,7 +13,7 @@ const blackOps = Black_Ops_One({
   subsets: ["latin"],
 });
 
-export function Banner({locale}: { locale: string }) {
+export function Banner({ locale }: { locale: string }) {
   const texts = ["Kaylane", "Dev Frontend"];
   const [textIndex, setTextIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -22,27 +21,21 @@ export function Banner({locale}: { locale: string }) {
 
   useEffect(() => {
     const currentText = texts[textIndex];
-    let i = typedText.length;
-    let timeout: NodeJS.Timeout;
-
-    if (!isDeleting && i < currentText.length) {
-      timeout = setTimeout(() => {
+    const i = typedText.length;
+    const timeout = setTimeout(() => {
+      if (!isDeleting && i < currentText.length) {
         setTypedText(currentText.slice(0, i + 1));
-      }, 150);
-    } else if (isDeleting && i > 0) {
-      timeout = setTimeout(() => {
+      } else if (isDeleting && i > 0) {
         setTypedText(currentText.slice(0, i - 1));
-      }, 100);
-    } else {
-      timeout = setTimeout(() => {
+      } else {
         if (!isDeleting) {
           setIsDeleting(true);
         } else {
           setIsDeleting(false);
           setTextIndex((prev) => (prev + 1) % texts.length);
         }
-      }, 1000);
-    }
+      }
+    }, !isDeleting ? 150 : i === 0 ? 1000 : 100);
 
     return () => clearTimeout(timeout);
   }, [typedText, isDeleting, textIndex]);

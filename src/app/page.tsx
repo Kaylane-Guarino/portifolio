@@ -16,7 +16,7 @@ export default function Home() {
             prop: typeof props
           ) => JSX.Element;
           return (
-            <CurrentComponent key={idx} {...(props as Record<string, any>)} />
+            <CurrentComponent key={idx} {...(props as Record<string, unknown>)} />
           );
         })}
       </main>
