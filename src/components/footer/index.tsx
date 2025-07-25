@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <p>
-          Copyright © 2025, feito com muito amor por{" "}
+          Copyright © 2025, feito com muito amor por
           <a href="" target="_blank">
             Kaylane Guarino
           </a>
