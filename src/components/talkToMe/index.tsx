@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import { Button, Input, message, Spin } from "antd";
 import Link from "next/link";
@@ -43,7 +43,11 @@ export function TalkToMe() {
       messageApi.success(res.message || "Email enviado com sucesso!");
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch (err: any) {
-      messageApi.error(err?.response?.data?.message || "Desculpa, estou com problemas para enviar o email. Tente novamente mais tarde.");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      messageApi.error(
+        err?.response?.data?.message ||
+          "Desculpa, estou com problemas para enviar o email. Tente novamente mais tarde."
+      );
     } finally {
       setLoading(false);
     }
@@ -106,7 +110,9 @@ export function TalkToMe() {
             onChange={(e) => handleChange({ ...form, message: e.target.value })}
             required
           />
-          <Button className={styles.send} htmlType="submit">{loading ? <Spin size="small" /> : "Enviar"}</Button>
+          <Button className={styles.send} htmlType="submit">
+            {loading ? <Spin size="small" /> : "Enviar"}
+          </Button>
         </form>
       </div>
     </section>
