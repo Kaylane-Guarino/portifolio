@@ -1,4 +1,5 @@
-import { useState } from "react";
+'use client';
+import React, { useState } from "react";
 import { Button, Input, message, Spin } from "antd";
 import Link from "next/link";
 import { Black_Ops_One } from "next/font/google";
