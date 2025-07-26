@@ -20,7 +20,7 @@ type FormData = {
   message: string;
 };
 
-export function talkToMe() {
+export function TalkToMe() {
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({

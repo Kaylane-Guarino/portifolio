@@ -3,13 +3,13 @@ import { Banner } from "./banner";
 import Footer from "./footer";
 import { Header } from "./header";
 import { Knowledge } from "./knowledge";
-import { talkToMe } from "./talkToMe";
+import { TalkToMe } from "./talkToMe";
 
 export const COMPONENTS = {
     Header,
     AboutMe,
     Banner,
     Knowledge,
-    talkToMe,
+    TalkToMe,
     Footer
 };

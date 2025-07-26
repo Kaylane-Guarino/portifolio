@@ -71,7 +71,7 @@ export const section: Array<Component> = [
     },
   },
   {
-    key: "talkToMe",
+    key: "TalkToMe",
     props: {},
   },
 ];
